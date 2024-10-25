@@ -1,0 +1,273 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+    /* Basic styling for the header */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: rgb(243, 243, 241);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Logo section */
+
+.logo img {
+    width: 220px;
+    background-position: center;
+    background-size: cover;
+}
+
+/* Navigation Menu */
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 60px;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: monospace;
+}
+
+.nav-menu ul li a:hover{
+    color: rgb(190, 161, 99);
+}
+
+/* Icons section */
+.header-icons {
+    display: flex;
+    gap: 30px;
+}
+
+.header-icons a i {
+    width: 24px;
+    height: 24px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+}
+
+
+/*Scetion*/
+
+.hero-img{
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+ 
+}
+
+.text-div{
+    width: 40%;
+    position: absolute;
+    bottom: -500px; /* Initially placed below the container */
+    animation: slideUp 1.8s forwards; /* Apply the animation */
+    font-size: 24px;
+    color: #333;
+}
+.text-div h1{
+    font-size: 5.5rem;
+    line-height: .9;
+    padding: 12px;
+}
+.text-div p{
+    font-size: 1.2rem;
+    padding: 12px;
+}
+.text-div button{
+    font-size: 1.2rem;
+    padding: 12px 40px;
+    margin-left: 12px;
+    margin-top: 12px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+}
+.text-div button:hover{
+    color: red;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.hero-img img{
+    width:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-position: center;
+}
+
+@keyframes slideUp {
+    0% {
+        bottom: -500px; /* Start from below the container */
+        opacity: 0;
+    }
+    100% {
+        bottom: 200px; /* End at the top of the container */
+        opacity: 1;
+    }
+}
+
+/*CAtagory*/
+
+#low-hero{
+    width: 100%;
+    height: 270px;
+    display: flex;
+    position: relative;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.catagory{
+    width: 25%;
+    height: 100%;
+    overflow: hidden;
+    margin: 5px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+}
+.catagory img{
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease, z-index 3s;
+    cursor: pointer;
+    background-color: rgba(243, 243, 243, 0.8);
+    overflow: hidden;
+    background-attachment: fixed;
+}
+.catagory img:hover{
+    transform: scale(1.1); /* Zooms the image by 1.5x */
+    z-index: 10; /* Brings the image to the front */
+}
+
+.text-box{
+    position:absolute;
+    left: 8%;
+    top: 30%;
+    width: 140px;
+    z-index: 20;
+}
+.text-box h3{
+   font-size: 1.7rem;
+   padding: 8px 0;
+   font-weight: 500;
+}
+.text-box p,a{
+   font-size: 1.2rem;
+   opacity: 0.7;
+   text-decoration: none;
+   color: black;
+}
+.text-box a{
+   border-bottom: 2px solid black;
+}
+
+/* Add this CSS for the search bar */
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    overflow: hidden;
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.search-container:hover {
+    border-color: rgb(190, 161, 99); /* Change border color on hover */
+}
+
+#search-input {
+    border: none; /* No border for the input */
+    padding: 10px 15px; /* Top-bottom and left-right padding */
+    font-size: 1rem; /* Font size */
+    outline: none; /* Remove outline */
+    width: 200px; /* Fixed width, adjust as needed */
+    transition: width 0.3s ease; /* Smooth transition for width */
+}
+
+#search-input:focus {
+    width: 250px; /* Expand width on focus */
+}
+
+#search-button {
+    background-color: rgb(190, 161, 99); /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    padding: 10px 15px; /* Padding for button */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+#search-button:hover {
+    background-color: darkorange; /* Change background color on hover */
+}
+
+#search-button i {
+    font-size: 1.5rem; /* Adjust icon size */
+    vertical-align: middle; /* Center icon vertically */
+}
+
+
+/* Add this CSS for the search bar */
+.search-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    overflow: hidden;
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.search-container:hover {
+    border-color: rgb(190, 161, 99); /* Change border color on hover */
+}
+
+#search-input {
+    border: none; /* No border for the input */
+    padding: 10px 15px; /* Top-bottom and left-right padding */
+    font-size: 1rem; /* Font size */
+    outline: none; /* Remove outline */
+    width: 200px; /* Fixed width, adjust as needed */
+    transition: width 0.3s ease; /* Smooth transition for width */
+}
+
+#search-input:focus {
+    width: 250px; /* Expand width on focus */
+}
+
+#search-button {
+    background-color: rgb(190, 161, 99); /* Button color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    padding: 10px 15px; /* Padding for button */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+#search-button:hover {
+    background-color: darkorange; /* Change background color on hover */
+}
+
+#search-button i {
+    font-size: 1.5rem; /* Adjust icon size */
+    vertical-align: middle; /* Center icon vertically */
+}
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Search Results</h1>
+    </header>
+    <main>
+        <div id="search-results"></div>
+    </main>
+
+    <script>
+        // Sample products array
+        const products = [
+            { name: "Oversize Striped T-shirt", price: "$19.99" },
+            { name: "Summer Mens Wear", price: "$29.99" },
+            { name: "Casual Sneakers", price: "$49.99" }
+        ];
+
+        // Get the search query from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('query');
+
+        // Filter products based on the search query
+        const results = products.filter(product => 
+            product.name.toLowerCase().includes(query.toLowerCase())
+        );
+
+        // Display results
+        const resultsDiv = document.getElementById('search-results');
+        if (results.length > 0) {
+            results.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.innerHTML = `<h2>${product.name}</h2><p>Price: ${product.price}</p>`;
+                resultsDiv.appendChild(productDiv);
+            });
+        } else {
+            resultsDiv.innerHTML = "<p>No products found.</p>";
+        }
+    </script>
+</body>
+</html>
+

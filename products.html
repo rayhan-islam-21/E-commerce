@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add some basic styling for the suggestion dropdown */
+        .suggestions {
+            border: 1px solid #ccc; /* Light grey border */
+            border-radius: 5px; /* Rounded corners */
+            max-height: 150px; /* Max height */
+            overflow-y: auto; /* Scroll if too many suggestions */
+            position: absolute; /* Position it below the input */
+            background: white; /* White background */
+            z-index: 1000; /* Ensure it's above other content */
+            width: calc(100% - 20px); /* Full width with padding */
+            display: none; /* Initially hidden */
+        }
+
+        .suggestion-item {
+            padding: 10px; /* Padding for each suggestion */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
+        .suggestion-item:hover {
+            background-color: rgb(190, 161, 99); /* Highlight on hover */
+            color: white; /* Text color change on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-icons">
+            <form id="search-form" onsubmit="return false;">
+                <input type="text" id="search-input" placeholder="Search products..." required>
+                <button type="submit" id="search-button"><i class='bx bx-search'></i></button>
+                <div class="suggestions" id="suggestions"></div> <!-- Suggestion dropdown -->
+            </form>
+        </div>
+    </header>
+    <main>
+        <h1>Our Products</h1>
+        <div id="product-list">
+            <div class="product" data-name="Oversize Striped T-shirt">
+                <h2>Oversize Striped T-shirt</h2>
+                <p>Price: $19.99</p>
+            </div>
+            <div class="product" data-name="Summer Mens Wear">
+                <h2>Summer Mens Wear</h2>
+                <p>Price: $29.99</p>
+            </div>
+            <div class="product" data-name="Casual Sneakers">
+                <h2>Casual Sneakers</h2>
+                <p>Price: $49.99</p>
+            </div>
+            <!-- Add more products as needed -->
+        </div>
+    </main>
+
+    <script>
+        // Sample products array
+        const products = [
+            { name: "Oversize Striped T-shirt", price: "$19.99" },
+            { name: "Summer Mens Wear", price: "$29.99" },
+            { name: "Casual Sneakers", price: "$49.99" }
+        ];
+
+        const searchInput = document.getElementById('search-input');
+        const suggestionsDiv = document.getElementById('suggestions');
+
+        // Event listener for input in search bar
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            suggestionsDiv.innerHTML = ''; // Clear previous suggestions
+            if (query) {
+                const filteredProducts = products.filter(product => 
+                    product.name.toLowerCase().includes(query)
+                );
+                // Display suggestions
+                filteredProducts.forEach(product => {
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.className = 'suggestion-item';
+                    suggestionItem.textContent = product.name;
+                    suggestionItem.onclick = function() {
+                        searchInput.value = product.name; // Set input value to selected suggestion
+                        suggestionsDiv.innerHTML = ''; // Clear suggestions
+                    };
+                    suggestionsDiv.appendChild(suggestionItem);
+                });
+                if (filteredProducts.length > 0) {
+                    suggestionsDiv.style.display = 'block'; // Show suggestions
+                } else {
+                    suggestionsDiv.style.display = 'none'; // Hide if no matches
+                }
+            } else {
+                suggestionsDiv.style.display = 'none'; // Hide if input is empty
+            }
+        });
+
+        // Hide suggestions when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!searchInput.contains(event.target)) {
+                suggestionsDiv.style.display = 'none';
+            }
+        });
+
+        // Handle search button click
+        document.getElementById('search-button').addEventListener('click', function() {
+            const query = searchInput.value;
+            if (query) {
+                window.location.href = `search-results.html?query=${encodeURIComponent(query)}`;
+            }
+        });
+    </script>
+</body>
+</html>
